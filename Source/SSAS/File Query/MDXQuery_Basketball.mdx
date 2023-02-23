@@ -1,0 +1,116 @@
+﻿--Câu 1: Cho biết số lượng cầu thủ không phải quốc tịch Mỹ chơi tại giải NBA vào mùa giải 19-20.
+select [Measures].[Player ID Distinct Count] on columns,
+except (
+[Dim Player].[Nationality].[Nationality].members,
+[Dim Player].[Nationality].&[United States]
+) on rows
+from [Basketball DW]
+where ([Dim Season].[Season].&[2019 - 2020],[Dim League].[League].&[NBA]);
+
+--Câu 2: Cho biết cầu thủ có nhiều kiến tạo nhất mỗi năm tại giải NBL (Úc).
+select [Measures].[Maximum AST] on columns,
+non empty generate([Dim Season].[Season].[Season].members,
+	     topcount( [Dim Season].[Season].currentmember * 
+		 [Dim Player].[Player].[Player],1,[Measures].[Maximum AST])) on rows
+from [Basketball DW]
+where [Dim League].[League].&[Australian-NBL];
+
+--Câu 3: Thống kê các cầu thủ tại NBA được draft tại round 1 và pick 1 và tổng số điểm ghi được qua các năm.
+select [Measures].[PTS] on columns,
+non empty ([Dim Season].[Season].[Season] * 
+		  [Dim Player].[Player].[Player]) on rows
+from [Basketball DW]
+where ([Dim Player].[Draft Pick].&[1],[Dim Player].[Draft Round].&[1],[Dim League].[League].&[NBA]);
+
+--Câu 4: Cho biết top 10 cầu thủ có tỉ lệ ném 3 điểm thành công cao nhất và đã thực hiện trên 100 cú ném mùa giải 18-19
+with member [Measures].[Tỉ lệ ném 3 điểm] as (([Measures].[3PM]) / ([Measures].[3PA]) * 100)
+select {[Measures].[Tỉ lệ ném 3 điểm],[Measures].[3PA]} on columns,
+topcount(filter([Dim Player].[Player].[Player],
+                          [Measures].[3PA] > 100),10,[Measures].[Tỉ lệ ném 3 điểm]) on rows
+from [Basketball DW]
+where [Dim Season].[Season].&[2018 - 2019];
+
+--Câu 5: Top 5 cầu thủ có tổng số phút ra sân nhiều nhất vào mùa giải 17-18.
+select [Measures].[MIN] on columns,
+topcount([Dim Player].[Player].[Player],5,[Measures].[MIN])  on rows
+from [Basketball DW]
+where [Dim Season].[Season].&[2017 - 2018];
+
+--Câu 6: Thống kê các cầu thủ có số lần chặn bóng > 50 lần và lấy lại bóng từ đối thủ > 50 mùa giải 18-19.
+select {[Measures].[BLK],[Measures].[STL]} on columns,
+non empty intersect({filter([Dim Player].[Player].[Player],[Measures].[BLK] > 50)},
+                    {filter([Dim Player].[Player].[Player],[Measures].[STL] > 50)}
+				   ) on rows
+from [Basketball DW]
+where [Dim Season].[Season].&[2018 - 2019];
+
+--Câu 7: Thống kê các cầu thủ có tỉ lệ ném 2 và 3 điểm cao hơn tỉ lệ ném phạt mùa tại giải Argentinian
+with 
+member [Measures].[Tỉ lệ ném 2 và 3 điểm] as (([Measures].[FGA]) / ([Measures].[FGM]) * 100)
+member [Measures].[Tỉ lệ ném phạt] as (([Measures].[FTA]) / ([Measures].[FTM]) * 100)
+select {[Measures].[Tỉ lệ ném 2 và 3 điểm],[Measures].[Tỉ lệ ném phạt]} on columns,
+non empty filter([Dim Player].[Player].[Player],[Measures].[Tỉ lệ ném 2 và 3 điểm] > [Measures].[Tỉ lệ ném phạt]) on rows
+from [Basketball DW]
+where[Dim League].[League].&[Argentinian-Liga-A];
+
+--Câu 8: Top 20 cầu thủ chơi hiệu quả nhất tại giải NBA mùa 17-18
+with member [Measures].[Sự hiệu quả] as (([Measures].[PTS] + [Measures].[REB] + [Measures].[AST] + [Measures].[STL] 
+										+ [Measures].[BLK] - ([Measures].[FGA] - [Measures].[FGM]) - ([Measures].[FTA] 
+										- [Measures].[FTM]) - [Measures].[TOV]) / [Measures].[GP])
+select [Measures].[Sự hiệu quả] on columns,
+non empty topcount([Dim Player].[Player].[Player],20,[Measures].[Sự hiệu quả]) on rows
+from [Basketball DW]
+where ([Dim Season].[Season].&[2017 - 2018],[Dim League].[League].&[NBA]);
+
+--Câu 9: Thống kê theo chiều giảm dần về số lượng cầu thủ của các trường trung học đang tham gia NBA
+select [Measures].[Player ID Distinct Count] on columns,
+non empty order([Dim Player].[High School].[High School],[Measures].[Player ID Distinct Count],desc) on rows
+from [Basketball DW]
+where [Dim League].[League].&[NBA];
+
+--Câu 10: Số phút thi đấu trung bình của cầu thủ tại các giải đấu mùa 19-20
+with member [Measures].[Số phút trung bình] as ([Measures].[MIN] / [Measures].[GP])
+select [Measures].[Số phút trung bình] on columns,
+non empty order([Dim League].[League].[League], [Measures].[Số phút trung bình],desc) on rows
+from [Basketball DW]
+where [Dim Season].[Season].&[2019 - 2020];
+
+--Câu 11: Thống kê các cầu thủ sinh năm 1998-2000 có số trận thi đấu > 60 trận tại mùa giải 18-20
+select [Measures].[GP] on columns,
+filter([Dim Player].[Player].[Player],[Measures].[GP] > 60) on rows
+from [Basketball DW]
+where ([Dim Player].[Birth Year].&[1998] : [Dim Player].[Birth Year].&[2000],
+       [Dim Season].[Season].&[2018 - 2019] : [Dim Season].[Season].&[2019 - 2020]);
+	   
+--Câu 12: Cho biết cầu thủ ít fair play nhất tại mỗi mùa giải tại giải đấu NBA (Lỗi cá nhân nhiều nhất)
+select [Measures].[Maximum PF] on columns,
+non empty generate([Dim Season].[Season].[Season].members,
+	     topcount( [Dim Season].[Season].currentmember * 
+		 [Dim Player].[Player].[Player],1,[Measures].[Maximum PF])) on rows
+from [Basketball DW]
+where [Dim League].[League].&[NBA];
+
+--Câu 13: Cho biết cầu thủ nào có kinh nghiệm nhất tại giải đấu NBA (Số trận đã chơi)
+select [Measures].[GP]  on columns,
+non empty head(order([Dim Player].[Player].[Player],[Measures].[GP],desc),1) on rows
+from [Basketball DW]
+where [Dim League].[League].&[NBA];
+
+--Câu 14: Top 3 cầu thủ có tỉ lệ hỗ trợ đồng đội cao nhất giải NBA mùa giải 18-19
+with member [Measures].[Tỉ lệ hỗ trợ] as ([Measures].[AST] / 
+										 ([Measures].[FGA]+(0.44 * [Measures].[FTA]) + [Measures].[AST] 
+										 +[Measures].[TOV]) * 100)
+select [Measures].[Tỉ lệ hỗ trợ] on columns,
+non empty topcount([Dim Player].[Player].[Player],3,[Measures].[Tỉ lệ hỗ trợ]) on rows
+from [Basketball DW]
+where ([Dim Season].[Season].&[2018 - 2019],[Dim League].[League].&[NBA]);
+
+--Câu 15: Cầu thủ sở hữu bóng tốt nhất tại 10 giải đấu mùa 19-20 (giảm dần theo tỉ lệ sở hữu)
+with member [Measures].[Tỉ lệ sở hữu bóng] as (0.96 * ([Measures].[FGA] + [Measures].[TOV] 
+											   + 0.44 * [Measures].[FTA] - [Measures].[ORB]) * 100)
+select [Measures].[Tỉ lệ sở hữu bóng] on columns,
+non empty topcount(generate([Dim League].[League].[League].members,
+	      topcount([Dim League].[League].currentmember * 
+		  [Dim Player].[Player].[Player],1,[Measures].[Tỉ lệ sở hữu bóng])),10,[Measures].[Tỉ lệ sở hữu bóng]) on rows
+from [Basketball DW]
+where [Dim Season].[Season].&[2019 - 2020];

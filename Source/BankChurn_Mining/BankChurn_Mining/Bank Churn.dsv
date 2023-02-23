@@ -1,0 +1,96 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="34e4b087-c8f7-4a04-8bf9-63d2d91926c6" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Bank Churn</ID>
+  <Name>Bank Churn</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:NameMatchingCriteria</Name>
+      <Value>1</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Bank Churn</DataSourceID>
+  <Schema>
+    <xs:schema id="Bank_x0020_Churn" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Bank_x0020_Churn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="8645021f-06d3-4a02-9c11-834739bd855e">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Clean_Data" msprop:design-time-name="479639f6-6a1f-4abd-8169-4f036b985a6e" msprop:DbTableName="Clean_Data" msprop:FriendlyName="Clean_Data" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="RowNumber" msprop:design-time-name="a383fdf0-312d-4ff4-8e49-ca0b74508714" msprop:DbColumnName="RowNumber" msprop:FriendlyName="RowNumber" type="xs:int" minOccurs="0" />
+                  <xs:element name="CustomerId" msprop:design-time-name="99ff97a8-8735-415a-b9fc-eea3cba70edb" msprop:DbColumnName="CustomerId" msprop:FriendlyName="CustomerId" type="xs:int" minOccurs="0" />
+                  <xs:element name="Surname" msprop:design-time-name="cf4e17d0-1f48-421a-ad78-c6200aa66613" msprop:DbColumnName="Surname" msprop:FriendlyName="Surname" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="45" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CreditScore" msprop:design-time-name="0e711e5a-8831-456b-a359-0c466f14e402" msprop:DbColumnName="CreditScore" msprop:FriendlyName="CreditScore" type="xs:int" minOccurs="0" />
+                  <xs:element name="Geography" msprop:design-time-name="0a146234-6da5-4baa-a652-a8319e2c3ad8" msprop:DbColumnName="Geography" msprop:FriendlyName="Geography" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Gender" msprop:design-time-name="6b7bf88c-baa1-49c5-ae6d-ba6a6c91ec90" msprop:DbColumnName="Gender" msprop:FriendlyName="Gender" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Age" msprop:design-time-name="1fcb5db3-ab71-4fd7-9db0-05f0bade529e" msprop:DbColumnName="Age" msprop:FriendlyName="Age" type="xs:int" minOccurs="0" />
+                  <xs:element name="Tenure" msprop:design-time-name="0eabfde8-3bb9-434d-92d5-3fb0224360ff" msprop:DbColumnName="Tenure" msprop:FriendlyName="Tenure" type="xs:int" minOccurs="0" />
+                  <xs:element name="Balance" msprop:design-time-name="ff2cbda9-7fd9-4407-94f8-c1af85541eba" msprop:DbColumnName="Balance" msprop:FriendlyName="Balance" type="xs:float" minOccurs="0" />
+                  <xs:element name="NumOfProducts" msprop:design-time-name="effabf81-665e-45d5-9a73-a02930718304" msprop:DbColumnName="NumOfProducts" msprop:FriendlyName="NumOfProducts" type="xs:int" minOccurs="0" />
+                  <xs:element name="HasCrCard" msprop:design-time-name="1ef5cad6-afa9-4af3-9ce8-bfa29a576001" msprop:DbColumnName="HasCrCard" msprop:FriendlyName="HasCrCard" type="xs:int" minOccurs="0" />
+                  <xs:element name="IsActiveMember" msprop:design-time-name="45d8de18-801f-4632-bbd1-78fe3ebcc30d" msprop:DbColumnName="IsActiveMember" msprop:FriendlyName="IsActiveMember" type="xs:int" minOccurs="0" />
+                  <xs:element name="EstimatedSalary" msprop:design-time-name="8be3027d-aaab-43b4-badf-317a919d0acd" msprop:DbColumnName="EstimatedSalary" msprop:FriendlyName="EstimatedSalary" type="xs:float" minOccurs="0" />
+                  <xs:element name="Exited" msprop:design-time-name="64c3b5e4-1883-4d95-b9fd-13cf81c489e8" msprop:DbColumnName="Exited" msprop:FriendlyName="Exited" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <Bank_x0020_Churn xmlns="" />
+  </Schema>
+</DataSourceView>

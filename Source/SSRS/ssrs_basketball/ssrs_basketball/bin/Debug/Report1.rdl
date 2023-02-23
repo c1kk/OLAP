@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>OLEDB-MD</DataProvider>
+        <ConnectString>Data Source=LAPTOP-O3MRM98V;Initial Catalog=basketball_ssas</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>ecec66cd-64ae-4a27-9a15-870e06a3398c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT NON EMPTY { [Measures].[Tỉ lệ ném 3 điểm], [Measures].[3PA] } ON COLUMNS, NON EMPTY { ([Dim Player].[Player].[Player].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( [Câu 4] ) ON COLUMNS FROM ( SELECT ( { [Dim Season].[Season].&amp;[2018 - 2019] } ) ON COLUMNS FROM [Basketball DW])) WHERE ( [Dim Season].[Season].&amp;[2018 - 2019] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Dim Player</DimensionName>
+                      <HierarchyName>Player</HierarchyName>
+                      <HierarchyUniqueName>[Dim Player].[Player]</HierarchyUniqueName>
+                      <LevelName>Player</LevelName>
+                      <UniqueName>[Dim Player].[Player].[Player]</UniqueName>
+                    </ID>
+                    <ItemCaption>Player</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Tỉ lệ ném 3 điểm</MeasureName>
+                      <UniqueName>[Measures].[Tỉ lệ ném 3 điểm]</UniqueName>
+                    </ID>
+                    <ItemCaption>Tỉ lệ ném 3 điểm</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>3PA</MeasureName>
+                      <UniqueName>[Measures].[3PA]</UniqueName>
+                    </ID>
+                    <ItemCaption>3PA</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Basketball DW</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Season].[Season]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Dim Season].[Season].&amp;[2018 - 2019]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Dim Player].[Player]</HierarchyUniqueName>
+                    <Condition xsi:type="In">
+                      <SetName>Câu 4</SetName>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { [Measures].[Tỉ lệ ném 3 điểm], [Measures].[3PA] } ON COLUMNS, NON EMPTY { ([Dim Player].[Player].[Player].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_VALUE, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( [Câu 4] ) ON COLUMNS FROM ( SELECT ( { [Dim Season].[Season].&amp;[2018 - 2019] } ) ON COLUMNS FROM [Basketball DW])) WHERE ( [Dim Season].[Season].&amp;[2018 - 2019] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Player">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Dim Player].[Player].[Player]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tỉ_lệ_ném_3_điểm">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Tỉ lệ ném 3 điểm]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID3PA">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[3PA]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Report1</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>24pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Height>0.43in</Height>
+            <Width>5in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="table1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.22in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Player</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Tỉ lệ ném 3 điểm</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <FontFamily />
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>ID3PA</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <FontFamily />
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.21in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Player">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Player.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Player</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Tỉ_lệ_ném_3_điểm">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Tỉ_lệ_ném_3_điểm.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Tỉ_lệ_ném_3_điểm</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ID3PA">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ID3PA.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ID3PA</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="table1_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>0.43in</Top>
+            <Height>0.43in</Height>
+            <Width>3in</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
+          </Tablix>
+        </ReportItems>
+        <Height>4.58917in</Height>
+        <Style />
+      </Body>
+      <Width>12.71875in</Width>
+      <Page>
+        <PageHeader>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>4.53319cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="signature1">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAHoAAABCCAYAAACYcMIkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAmSSURBVHhe7dx1qC1dGQbwa2AgdnejYgc2dgt2KwYWgiK2goWFoAiKgghioX98YqHYqBgY2IUBYoABiq1goM/v3vPCYpg9M3ufueec7571wMPeZ2b2zFrrXW+uNedER0dHR0dHR0dHR0dHxxo4197nmY5zhA8KLx7+0oHjhnPufZ7pIODHh1c9+dcxxHER9NVCQv7Byb+OIY6DoJnt24a/Co+l2YbjIGhm+67h98I/O3AccViC9lxa9v7wleF5wm1w6fCs8DXh+RyYwLXC24TfCP/lwHHEQQv63OGdw4+GXwjvH/4s3EYAFwhfHD44/Gf473ATmO1bhL8NaXTHaYYJdZfw8+H/Gv4wvG64FCbK80K//XV483AKFw1ZjY+Fl3Cg4/SARt0kNNitgIuvD88bLgEhPyf8S+i3bw7PH07hpqEJ8arwuNQMDhxM7LPDEkzxQ+FX9r7fJ1wCQn5qWPdiCW4QTsEke2a4zXM6tsS1w0+EJVx8T3jDkM+kZV8KrxzOgcY/Nywh+3xESJBTuHD43vDboYCsY0UY/AeEPw9LwB8OmW/nmM+XhY4vMaeXCd8a1r0I+VHhkiCyzPY7wws60LEOCJKmleb9aO/v1gfTYJrs/JQ59Ru/dY8Ssu/3COc0ufCM0O98dqyEoZBpMfM9BOE6v8lsV37t9yVgFMwpYy5FmW3tkUN3rISbhWWu3xCOmUpFkdeFrhlG220BpRXwmFVYgjLbPa1aERcK3xESzEvCTSlPa7Yf6UBQBZSPh62ATZpnhcqXu6DMdk+rVsR9QybyLaGUahPUmw2+1Oj64R3DoYC/Gz4lNHl2RZlt9+tp1UqgvQoXc3ktH/7C0ODLoeXSJVyThEXgS2n4fqEdPwmn0iqu4lYh
+N8N6cBG3C/eDh4Z/CEX5JvW27uZI43LhZ8O5Chc/yV+WcLHM86XCNfHk0P3fFg4tjAkn1RsGe/i58ErhrrhiyKoRtvuJN5bUCeZAme4ZavMLHDgM0BiaYzZPoYIjA/C10ILEXPlyFwgCaZTnEHgL56yUtZkBLb51qG27FFb0QV8+E1bd/Sqh4pBnfDC00rYL3Fsgyp3VxLlReCigATR1rgGCL41FZvIO4dJ8eBtYIOFGCM7kKrSVumEkXykfy8RCLUEt0pi0NFjw11oPwiVk91WG3aav7b393qRhhRw/0mjTKp3no5nt24droyaU2W/lygArshBuHW/zcRG5yNy5JYsk0FoGQqDBY6jg8yOhtizBxcJXh+6tzfcOCfiSoQBTX44syo/r9N1CJUzfmbvLh2uBkAjLvQV+hEhzy2eO5fdt7GDz4By014YHgnhaOBWXsCLM7lKXQGu/GGqLsq/yb0FZeWiljhxqZn8qvGxYa8SOPT1cy4Tb/FerYvcKa7ULLYqMCUWk7/ySdfEyx65fUm9fKmj9F2yxcmMTiEsQWG7jWg4c7SKGzype0B7HCGatLbjla/k2rqKE7FljaZsBrpRvLEJv4dybwqVCBpPIvacErQ0PC1kdZIGG9650UZ+23XJ1YKDBNNkAqYAVWu1bYjLn0MYBRQNnEDdZjGqba5nGTTBJalcL37w01xfR+83Xw2s4MEArZNqsDcO2+rvW1IdZxJFCme1hzbkVjCBDNWs/aOMAnBMyVNvmrMqdQv5RUNX6zTk8OnR/1b+xUq5gtMw1TR5ra03GI+2fW2GOpRhlapmlud0icyih4dTAFfhARR7Xty5lCPFEBV8CyaWYi+avE5ZFYy02WQla7prKIo4kyjybjWOb+MYWOXZBGwfMDVxhrm2FSteWpl6Ftt4+rGa1OTa/vyk2qCDMdWKJqYl7qKiAa1Og06ZD+1llan3t3MJKYa5tUNmBybBtHbwCKM9gbQqtv5dKbcrBoaqJ
+c5PxUNGmUFOBTtWl9+OnK0VaOiBtmXSqbYJH952LyMdQE2m4wUJbyy9b9duE1kqtEcOctrKa5F8Z79Phlx3YgO+Hfw2ZUtWfbcGcWe4kPCXOJS/R8Y9zbTPQgiX3pXl/D5fCpLCJAr4a/ubU15OTX92A4FXUPhlugtJyxQTaeSRfJWo3Isz53jZa3mWZsK1sLU0/alPCXBAmyt5loYNVYV1obZtS1ro9jbYjZxNMXhNCG5EV2DdOh0bTMK/aMDlevZnCH8Mfn/q6U/pACAaC1shX58AEWq1yPUH+NxyDpdMrhF7l+b0DCyGaf0gobqCJ3wyBlt8vZCHeHZpAm0DjrYiB14ikikNI84zv4tWstQWtAU8M/xYKtAhyCt6d+tapryduHA5r0VNozfZ3wl+EczCI9paLuH/qwAxo3z9OfV0EO2f8ZwV4X1j9Vw69e2iC2XTxn3AMLMzDw9Li34VDQQvonhBeJHR+EdYUtAY8JrTiIkf1ntUS0EQDcPXQ6s1S6KhYAAQ9YzN/CFHuNUOa9icHZkCr597WLNDaJ4Um0wfC1pox1bRcO8uCjcFkb13Q2Ku+Cjhq928Py/8fGGiXIgUftO1iexuht6nIHCr9GPrCKchp557DKjGJhLKpfDlE239siytt4Whqj3mbXxeHcUcVWhRxjNuBo8p5/F6bTiyBQap67jYv3VVqVqtic6CZChSbhEcjCYJleGxYKdiSDYZtpeu1YduHtniy6V6erW2uadkGqHWNcV4lQNsGTD9TvauQC7UvfMnLc2D22+NlMKai5xY14MPasz60u0W4H26oonMZxNSuVH3Wd9eOWTPPqt2uYwJSOLJN2nnW4F1739uIv71mSeVvVch7azeE/zywjX8dggbQBB2ZKgu6zsQSfAnk5LdLzXalTGIHvtczatOd53If7e4Tg2yw9W9T7bzdokSjafYQ9VzXDFNIY1ia7DleC2Yd/V3rz/pcLues8LSbbDPfg21neWNo9pup
+It81gjpBUpk/E8duDoPr3rRGblkb5RQbfC412+BebX5adE+R7tBltNcTgleAa5B9lpl3nrC1fwxtlUvNmjb6/ePC2uLEmkmp9PWWoefpm80QxsI128Y+O4HZky5ogPxQ1Gf2riHgFvZa0yIdGyNtFEi9aO/vbTfe0eKXhgSkHzR1k/UA56xBD9tRNB7Oz6WF3BG3NHYPloRlKJjUAsH2mv24xSML5uz5Yc12n4I0/o02GFSBkoj7INZoafoDQxU4gm0n+9J94CajQk39aw+l15eH1wuHyuJaOTdLQ9NfEe7HLZ5tUTN+l8WGjrMRyodNrTx1DLC2jz0IMGOCQP++qqOjo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo+PMwYkT/we2I5u1ZNlBZgAAAABJRU5ErkJggm0qSkCInQz9f2vt7OvaU81leYHIAKfDESpfLGF7ufZzwuyI9bLz3fugg+z9MWt/6tv+XAI7TUBB32n3a/wxIDCK9rKtWz1E/okklGmlOM1ery7OPM9sd5VA9vdzPCsh9D9uWe59KWDx+6dp2e+scdNGStfOuaay58+f5G9a5IIw+mNWzPpJhuP42Z61PydTfk77vEcCpQko6KXdq3GHQKCH1dmrfu1WdGVsxrLDWvbSzHGdnufXCWR//1Tb+n19G9zcLW39ubGePNvaxupu4x51SsWyTW1Z/fueDHerlrX/kANKHtwLY5+RwFYRUNC3yl02dgsI9MS3VQln4zaz/ZyKNq6FP3PigJiObapt3MfsnGz8S7Y18E3qvPdEtnMnuVKSN7UPj+vxnNHOqXPL9rBze6+ux9+XDYi2oAvYRAkcDgEF/XC4+9WaBLoYkghHbfNVCWe97vp+1tH71rNvzxS+sTzsurb9Tgt1E/JerAk/5bU+YKD2+k2Geu609UVtexo5BRTaWXaNUYf9sJlqpz+XQEkCCnpJt2rUIRHoYkjCGclhX1zRji7G/7UiE3yq+ZtsPevvuniSVyT5
+8Jq2jYK6aRb+GCqn5GvfatbX468/oyrduAvA7PapXuDPJbBAQEG3S0jgYAicqlVlQ8gJKTMjXXWN2elkfW8S1uadY6W3ucLHvvTHzkiG4xS4s+zhwJY+YDhlK57Tt+r1c+PJwCfB7n0roPBvEcl6lKvlunQSwvNeEpDATAIK+kxQ3iaBCQJduNiqRkh9XWb2uI7OPmxmtJtcY7h9zraunqzGc+vWpfspcmxRW7blbFUbyZ4neY2s/jEzfZy1c6DLur3sVIRjmxxt/GCSGyT52MIHqYVPKVu+5elrm/QY790JAgr6TrhZI48xAYSGCnDUJWd2/tYZ3+vr6MyI79S2nc14LGO4fXGf+6rne7Lah1q1ulWDjS7o72pJdnOPeb1oO4qVDP4xOjE3wY1QP1nviD4X5XJZg//yYBCJdYTxiWisW86Yw9B7JFCSgIJe0q0adRwJjBncc7aO9aZ1saP865hANtX0MfGOw1jmbOvqe9+n7u+CTo33uSelMQsnwnC7JfvG5yb/jQMC7B/X4DsPsuZJlOMM9nXLGVP8/LkEyhJQ0Mu6VsOOAwF+f6jJ/rQ2K0fATpj53VGYxy1eU4/3gcDiWvW65zgmldnvuu/0412pr04IfVnZ1sVvjPbzs7EIzVhgZ92ywrg/vb9/MS+gF6T57IzljCl+/lwCZQko6GVdq2HHgUAvY0oom7D5Zzb45livnJPXCDmvOpJ0fG2f9fZT3FZl0vdnTtYqsnEa2zKRZoZ9+yT3a2vglHxldk5OwKsm7Bkrv1H1jRPTug1jkZlV7+qHv3Dwy3iNiYL9Hk6SY13fRLkNOpm37hYBBX23/K21B0PgxEmu2k4L24uY91b0UPN3m9hOlYFlNsuhKwjeeIrbOqu6sLIPfUx0wwbEm5n7udohKYSyOfmMbHgOl+Hv31zxctbLmc0jtOwrX4xOnK6FxjkLflnGOomBDGIe2PIHeAfr7+MpbeM9myxnHIyXfYsEtoyAgr5lDrO5
+h07gDG0my6yS0qhUe2NL1l6uMTt8XTlU7uN0NMT3PO2YUdbF+9awdd8mtE/iHdvqWKsnIY4T0Wj/1du6992TfLK9pK+jc676qtrwnHnOOeuE8Nlzf+skH11oRP8ugr+4NQ+GCDltoAY9g5P3JHl7+9MHHoTqsfnlhtr30r18ZtcIKOi75nHt3ZQAM1nWl8kURwBZM+fs8Ue0Y0LHM7w3fTf3UyYVwSUk/ui2D/sLyc+y2c/atplRge2CrZQqB7LMDbfz/sX93b2NbA1jMEI1uzHUP96P2D64lYJlIIBIU2Od8DynpXFoC9XkOGhm8RqL1JCMxzGsRAnYNnevJAwcWKK4RzuIhX3svI8Bwt3adxhoLJv974Wzz0igPAEFvbyLNXAfBAhXP6cdOcoMEsF5dZKPt1nyPl79c4/+VpKnJrnwihe+o81iqa+OwC47xW1dW1iHRjgJoX+g2YRQLjschfdwP4er8GfZhdCzHxyR5u+rLgZBL0nCWvvixX513t/3mo+H1vR7X7uH3ISD8onvkcDWEVDQt85lNrgoAcLQzMSZATN7ZdDAmeIva7NW1pNZsyb0PqeYzH4xEeYnIkEJWIq9cPVBDSJNxvnUxb8vDFYQ/sskYX870QXyAD6yMCjiXkL4j2rLAxSZYS1/r8sZU23z5xIoR0BBL+dSDSpKoM9gqf++6aEpRZFolgQkMBJQ0O0PEtgOAoTbCfkzg191itt2WGIrJSCBY0JAQT8mWH2pBA6cwNWamLPffSyJeuAf8oUSkMB2ElDQt9NvtloCEpCABCTwcwQUdDuEBCQgAQlIoAABBb2AEzVBAhKQgAQkoKDbByQgAQlIQAIFCCjoBZyoCRKQgAQkIAEF3T4gAQlIQAISKEBAQS/gRE2QgAQkIAEJKOj2AQlIQAISkEABAgp6ASdqggQkIAEJSEBBtw9IQAISkIAEChBQ0As4URMkIAEJSEACCrp9QAISkIAEJFCAgIJewImaIAEJSEAC
+ElDQ7QMSkIAEJCCBAgQU9AJO1AQJSEACEpCAgm4fkIAEJCABCRQgoKAXcKImSEACEpCABBR0+4AEJCABCUigAAEFvYATNUECEpCABCSgoNsHJCABCUhAAgUIKOgFnKgJEpCABCQgAQXdPiABCUhAAhIoQEBBL+BETZCABCQgAQko6PYBCUhAAhKQQAECCnoBJ2qCBCQgAQlIQEG3D0hAAhKQgAQKEFDQCzhREyQgAQlIQAIKun1AAhKQgAQkUICAgl7AiZogAQlIQAISUNDtAxKQgAQkIIECBBT0Ak7UBAlIQAISkICCbh+QgAQkIAEJFCCgoBdwoiZIQAISkIAEFHT7gAQkIAEJSKAAAQW9gBM1QQISkIAEJKCg2wckIAEJSEACBQgo6AWcqAkSkIAEJCABBd0+IAEJSEACEihAQEEv4ERNkIAEJCABCSjo9gEJSEACEpBAAQIKegEnaoIEJCABCUhAQbcPSEACEpCABAoQUNALOFETJCABCUhAAgq6fUACEpCABCRQgICCXsCJmiABCUhAAhJQ0O0DEpCABCQggQIEFPQCTtQECUhAAhKQgIJuH5CABCQgAQkUIKCgF3CiJkhAAhKQgAQUdPuABCQgAQlIoAABBb2AEzVBAhKQgAQkoKDbByQgAQlIQAIFCCjoBZyoCRKQgAQkIAEF3T4gAQlIQAISKEBAQS/gRE2QgAQkIAEJKOj2AQlIQAISkEABAgp6ASdqggQkIAEJSEBBtw9IQAISkIAEChBQ0As4URMkIAEJSEACCrp9QAISkIAEJFCAgIJewImaIAEJSEACElDQ7QMSkIAEJCCBAgQU9AJO1AQJSEACEpDATwHRsOa12RlYHgAAAABJRU5ErkJggg==</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>2bcb5f2a-95fa-4d06-8b53-f0b6f1607145</rd:ReportID>
+</Report>

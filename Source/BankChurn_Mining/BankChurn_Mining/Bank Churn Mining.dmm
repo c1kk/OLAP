@@ -1,0 +1,353 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a5620c50-5438-41ca-8166-b1fa07181fcc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Bank Churn Mining</ID>
+  <Name>Bank Churn Mining</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CaseTableName</Name>
+      <Value>dbo_Clean_Data</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-5470" scrolltop="-5000" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="19632" y="13705" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Clean_Data" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3228" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e00009c0c000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Clean_Data" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-5470</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5000</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="594da329-04c9-4c86-b056-a52e6673ea44">
+    <DataSourceViewID>Bank Churn</DataSourceViewID>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="620a2c40-114d-4242-be47-cf73c3153e22">
+      <ID>Balance</ID>
+      <Name>Balance</Name>
+      <Type>Double</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8a7735d7-a468-422d-8f76-3b831fd9e1a0">
+          <DataType>Single</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="50125e62-4db3-47bd-ab46-b6e405e78ddf">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>Balance</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="fe7bdcd9-8737-48e3-9d9e-e0610007645a">
+      <ID>Credit Score</ID>
+      <Name>Credit Score</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a7725922-aa75-4673-87e8-3753c334df2e">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0b7561ce-e42c-4512-9a22-97738c62047c">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>CreditScore</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="2a95095d-56fd-4886-8abf-3ac8df655ffa">
+      <ID>Customer Id</ID>
+      <Name>Customer Id</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7ac7baf9-a450-4da5-979c-27090b7164f7">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e3159311-9a94-40eb-86b1-4a73177ac9e9">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>CustomerId</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="cf95bcd0-a83d-4705-a469-a4c83fed8446">
+      <ID>Estimated Salary</ID>
+      <Name>Estimated Salary</Name>
+      <Type>Double</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="85d849a3-40db-4073-b8f2-9e3375f541c0">
+          <DataType>Single</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bb5e3fa8-8e32-4fe8-94e6-d7f30742ecb5">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>EstimatedSalary</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="dea77a3b-1013-4bbe-b1a7-fe43469055fb">
+      <ID>Exited</ID>
+      <Name>Exited</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7bd25431-b9a4-42c1-ae8b-979693fea828">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f381d05b-8a1f-4009-a3bc-754771693351">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>Exited</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="f61fb0d7-6fe9-4a22-b7de-a375b1387bcc">
+      <ID>Has Cr Card</ID>
+      <Name>Has Cr Card</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e0b810bd-d958-40c6-959d-620b53ee0bcb">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="35c2a2e8-3e62-4121-b118-df0c44832174">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>HasCrCard</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="0b70bb2d-194c-4bd9-a2f2-9ed5993eddcd">
+      <ID>Is Active Member</ID>
+      <Name>Is Active Member</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2919f96f-e437-44b2-8b74-e85a090921a4">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="be87e664-4794-43f2-a9f0-98cdeee9b2dd">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>IsActiveMember</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="cc44364b-ce43-4c1b-819f-2ff82685536d">
+      <ID>Num Of Products</ID>
+      <Name>Num Of Products</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="63d55689-1486-4056-a01f-c263e32ce99d">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c0d8c19d-a4d4-4f7e-8b9a-78abcc16844e">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>NumOfProducts</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="0a276524-ba00-40ee-a5ec-a82b25bc7fdb">
+      <ID>Tenure</ID>
+      <Name>Tenure</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0112727a-896a-4f40-9ece-cef85fd4650b">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c6c856e3-f5af-42ad-97d1-f2e6d157b2b2">
+            <TableID>dbo_Clean_Data</TableID>
+            <ColumnID>Tenure</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="0506ae79-1642-4f55-9824-2bb9e4e2e589">
+      <ID>Clean Data</ID>
+      <Name>Clean Data</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Decision_Trees</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="ff5a9d8b-70b2-4dc7-ab7d-f88537e8ed8a">
+          <ID>Balance</ID>
+          <Name>Balance</Name>
+          <SourceColumnID>Balance</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="e6a63d75-be7d-47e3-9565-b96b7f04695e">
+          <ID>Credit Score</ID>
+          <Name>Credit Score</Name>
+          <SourceColumnID>Credit Score</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="a30e23da-7535-4d3f-8585-8e5b412bf0e7">
+          <ID>Customer Id</ID>
+          <Name>Customer Id</Name>
+          <SourceColumnID>Customer Id</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="5e185ed9-48f9-4b84-a72f-0cdeb4e89210">
+          <ID>Estimated Salary</ID>
+          <Name>Estimated Salary</Name>
+          <SourceColumnID>Estimated Salary</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="5de8fa9f-0534-40b2-85db-41da32ce8552">
+          <ID>Exited</ID>
+          <Name>Exited</Name>
+          <SourceColumnID>Exited</SourceColumnID>
+          <Usage>PredictOnly</Usage>
+        </Column>
+        <Column dwd:design-time-name="fdc17bce-3c27-419b-ada8-653c8da6793f">
+          <ID>Has Cr Card</ID>
+          <Name>Has Cr Card</Name>
+          <SourceColumnID>Has Cr Card</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="781a9396-946d-4515-a079-fb4901aec11b">
+          <ID>Is Active Member</ID>
+          <Name>Is Active Member</Name>
+          <SourceColumnID>Is Active Member</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="8d555bfd-1250-46b8-b501-2562857fd52f">
+          <ID>Num Of Products</ID>
+          <Name>Num Of Products</Name>
+          <SourceColumnID>Num Of Products</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="5938b10c-90e3-4f53-baba-8cc0fbbfdeef">
+          <ID>Tenure</ID>
+          <Name>Tenure</Name>
+          <SourceColumnID>Tenure</SourceColumnID>
+        </Column>
+      </Columns>
+    </MiningModel>
+    <MiningModel dwd:design-time-name="7cb8a654-96b6-4d46-8f76-11713004d1b2">
+      <ID>Clustering Model</ID>
+      <Name>Clustering Model</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Clustering</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="f6c4bd21-58eb-42d6-87c5-8563f3b74a3a">
+          <ID>Balance</ID>
+          <Name>Balance</Name>
+          <SourceColumnID>Balance</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="01a72300-b326-40ee-8270-53659ef9866b">
+          <ID>Credit Score</ID>
+          <Name>Credit Score</Name>
+          <SourceColumnID>Credit Score</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="f714d335-0857-4515-8c8c-8b8e787a97c2">
+          <ID>Customer Id</ID>
+          <Name>Customer Id</Name>
+          <SourceColumnID>Customer Id</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="886ddb01-fe4f-4079-97eb-96e73d04ce70">
+          <ID>Estimated Salary</ID>
+          <Name>Estimated Salary</Name>
+          <SourceColumnID>Estimated Salary</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="51b12efb-a460-4f6a-88ed-13e731ea5f13">
+          <ID>Exited</ID>
+          <Name>Exited</Name>
+          <SourceColumnID>Exited</SourceColumnID>
+          <Usage>PredictOnly</Usage>
+        </Column>
+        <Column dwd:design-time-name="0f7628c0-f0a9-44a8-a42f-499cb1ef8583">
+          <ID>Has Cr Card</ID>
+          <Name>Has Cr Card</Name>
+          <SourceColumnID>Has Cr Card</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="239c6975-813f-4910-bc31-f733f3ff8cfd">
+          <ID>Is Active Member</ID>
+          <Name>Is Active Member</Name>
+          <SourceColumnID>Is Active Member</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="c10f6c8a-a9f8-44ce-809f-f507dc75997d">
+          <ID>Num Of Products</ID>
+          <Name>Num Of Products</Name>
+          <SourceColumnID>Num Of Products</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="ef86aef0-5b0e-4cf9-98af-3da304777f6b">
+          <ID>Tenure</ID>
+          <Name>Tenure</Name>
+          <SourceColumnID>Tenure</SourceColumnID>
+        </Column>
+      </Columns>
+    </MiningModel>
+  </MiningModels>
+  <ddl100_100:HoldoutMaxPercent>30</ddl100_100:HoldoutMaxPercent>
+</MiningStructure>

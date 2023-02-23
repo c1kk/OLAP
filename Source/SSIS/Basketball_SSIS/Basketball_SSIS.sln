@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Basketball_SSIS", "Basketball_SSIS\Basketball_SSIS.dtproj", "{72B36896-FDE5-4632-9BBF-6FBFFCBB8793}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72B36896-FDE5-4632-9BBF-6FBFFCBB8793}.Development|Default.ActiveCfg = Development
+		{72B36896-FDE5-4632-9BBF-6FBFFCBB8793}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB91D2E8-0937-4ECD-979F-430944A5DC67}
+	EndGlobalSection
+EndGlobal
